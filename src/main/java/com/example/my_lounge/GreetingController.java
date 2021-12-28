@@ -15,16 +15,12 @@ public class GreetingController {
     @Autowired
     private MessageRepository messageRepository;
 
-    @GetMapping("/greeting")
-    public String greeting(
-            @RequestParam(value = "name", required = false, defaultValue = "World") String name, Map<String, Object> model
-    ) {
-        model.put("name", name);
-
+    @GetMapping("/")
+    public String greeting(Map<String, Object> model) {
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping("/home")
     public String home(Map<String, Object> model) {
         Iterable<Message> messages = messageRepository.findAll();
 
