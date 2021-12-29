@@ -1,4 +1,4 @@
-package com.example.my_lounge.accessing_db;
+package com.example.my_lounge.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

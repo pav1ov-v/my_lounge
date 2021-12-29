@@ -1,7 +1,7 @@
-package com.example.my_lounge;
+package com.example.my_lounge.controller;
 
-import com.example.my_lounge.accessing_db.Message;
-import com.example.my_lounge.accessing_db.MessageRepository;
+import com.example.my_lounge.domain.Message;
+import com.example.my_lounge.dao.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
     @Autowired
     private MessageRepository messageRepository;
 
@@ -29,7 +29,7 @@ public class GreetingController {
         return "home";
     }
 
-    @PostMapping
+    @PostMapping("/home")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
         Message message = new Message(text, tag);
 
