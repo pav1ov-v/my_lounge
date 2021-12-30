@@ -4,6 +4,7 @@ import com.example.my_lounge.dao.UserRepository;
 import com.example.my_lounge.domain.Role;
 import com.example.my_lounge.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/user")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
     @Autowired
     UserRepository userRepository;
@@ -37,7 +39,6 @@ public class UserController {
         user.setUsername(username);
 
         user.getRoles().clear();
-
 
         Set<String> roles = new HashSet<>();
         for (Role role : Role.values()) {
