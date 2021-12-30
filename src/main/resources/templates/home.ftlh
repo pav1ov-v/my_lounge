@@ -4,14 +4,15 @@
 <@c.page>
     <div>
         <@l.logout/>
-        <span><a href="/user">User list</a> </span>
-    </div>
+        <span><a href="/user">User list</a></span>
+    </div><br>
+    <div>Add message to list</div>
     <div>
         <form method="post">
             <label><input type="text" name="text" placeholder="Input message"/></label>
             <label><input type="text" name="tag" placeholder="Input tag"></label>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <button type="submit">Add to list</button>
+            <button type="submit">Add</button>
         </form>
     </div>
     <div>Sort by tag</div>

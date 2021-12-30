@@ -1,16 +1,16 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-    List of users
-
+    <div><a href="/home">Back home</a></div><br>
+    <div>User list:</div>
     <table>
-        <thread>
+        <thead>
             <tr>
                 <th>Name</th>
                 <th>Role</th>
                 <th></th>
             </tr>
-        </thread>
+        </thead>
         <tbody>
         <#list users as user>
             <tr>

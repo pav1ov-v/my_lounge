@@ -18,7 +18,8 @@ public class MainController {
     private MessageRepository messageRepository;
 
     @GetMapping("/")
-    public String greeting(Map<String, Object> model) {
+    public String greeting(@AuthenticationPrincipal User user, Map<String, Object> model) {
+        model.put("user", user);
         return "greeting";
     }
 
