@@ -18,11 +18,10 @@
         </form>
     </div>
     <div>Sort by tag</div>
-    <form method="post" action="filter">
+    <form method="get" action="/home">
         <label>
-            <input type="text" name="filter" placeholder="Output tag">
+            <input type="text" name="filter" value="${filter!""}" placeholder="Output tag">
         </label>
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <button type="submit">Search</button>
     </form>
     <div>Message list:</div>
