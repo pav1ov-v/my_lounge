@@ -16,7 +16,7 @@
             <tr>
                 <td>${user.getUsername()}</td>
                 <td><#list user.getRoles() as role>${role}<#sep>, </#list></td>
-                <td><a href="/user/${user.id}">Edit</a></td>
+                <td><a href="/user/${user.getId()}">Edit</a></td>
             </tr>
         </#list>
         </tbody>

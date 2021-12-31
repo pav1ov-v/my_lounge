@@ -33,10 +33,13 @@ public class UserController {
     @PostMapping
     public String userSave(
             @RequestParam String username,
+            @RequestParam String password,
             @RequestParam("userId") User user,
             @RequestParam Map<String, String> form
     ) {
         user.setUsername(username);
+
+        user.setPassword(password);
 
         user.getRoles().clear();
 

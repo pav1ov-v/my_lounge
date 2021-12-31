@@ -5,7 +5,13 @@
     <div>User editor</div><br>
     <div>Edit username</div>
     <form action="/user" method="post">
-        <div><label><input type="text" name="username" value="${user.getUsername()}"></label></div><br>
+        <div>
+            <label><input type="text" name="username" value="${user.getUsername()}"></label>
+        </div><br>
+        <div>Edit user password</div>
+        <div>
+            <label><input type="text" name="password" value="${user.getPassword()}"></label>
+        </div><br>
         <div>Edit user role</div>
         <#list roles as role>
             <div>

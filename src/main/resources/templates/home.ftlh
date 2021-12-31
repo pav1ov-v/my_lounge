@@ -23,8 +23,8 @@
     <div>Message list:</div>
     <#list messages as message>
         <div>
-            <span>${message.text}</span>
-            <i><${message.tag}></i>
+            <span>${message.getText()}</span>
+            <i><${message.getTag()}></i>
             <strong>${message.getAuthorName()}</strong>
         </div>
     <#else>
