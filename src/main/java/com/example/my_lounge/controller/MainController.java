@@ -14,8 +14,12 @@ import java.util.Map;
 
 @Controller
 public class MainController {
+    private final MessageRepository messageRepository;
+
     @Autowired
-    private MessageRepository messageRepository;
+    public MainController(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+    }
 
     @GetMapping("/")
     public String greeting(@AuthenticationPrincipal User user, Map<String, Object> model) {
@@ -25,7 +29,7 @@ public class MainController {
 
     @GetMapping("/home")
     public String home(@RequestParam(required = false, defaultValue = "") String filter, Map<String, Object> model) {
-        Iterable<Message> messages = messageRepository.findAll();
+        Iterable<Message> messages;
 
         if (filter != null && !filter.isEmpty()) {
             messages = messageRepository.findByTag(filter);

@@ -14,8 +14,12 @@ import java.util.*;
 @RequestMapping("/user")
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
+    private final UserRepository userRepository;
+
     @Autowired
-    UserRepository userRepository;
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @GetMapping
     public String userList(Map<String, Object> model) {

@@ -15,7 +15,7 @@
             <button type="submit">Add</button>
         </form>
     </div>
-    <div>Sort by tag</div>
+    <div>Search by tag</div>
     <form method="get" action="/home">
         <label><input type="text" name="filter" value="${filter!""}" placeholder="Output tag"></label>
         <button type="submit">Search</button>

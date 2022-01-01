@@ -3,6 +3,7 @@ package com.example.my_lounge.domain;
 import javax.persistence.*;
 
 @Entity
+@Table
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
