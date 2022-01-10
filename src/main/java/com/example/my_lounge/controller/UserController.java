@@ -1,8 +1,8 @@
 package com.example.my_lounge.controller;
 
-import com.example.my_lounge.dao.UserRepository;
 import com.example.my_lounge.domain.Role;
 import com.example.my_lounge.domain.User;
+import com.example.my_lounge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -14,16 +14,16 @@ import java.util.*;
 @RequestMapping("/user")
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
     public String userList(Map<String, Object> model) {
-        model.put("users", userRepository.findAll());
+        model.put("users", userService.userList());
         return "userList";
     }
 
@@ -35,30 +35,13 @@ public class UserController {
     }
 
     @PostMapping
-    public String userSave(
+    public String userUpdate(
             @RequestParam String username,
             @RequestParam String password,
             @RequestParam("userId") User user,
             @RequestParam Map<String, String> form
     ) {
-        user.setUsername(username);
-
-        user.setPassword(password);
-
-        user.getRoles().clear();
-
-        Set<String> roles = new HashSet<>();
-        for (Role role : Role.values()) {
-            roles.add(role.toString());
-        }
-
-        for (String key : form.keySet()) {
-            if (roles.contains(key)) {
-                user.getRoles().add(Role.valueOf(key));
-            }
-        }
-
-        userRepository.save(user);
+        userService.userUpdate(username, password, user, form);
 
         return "redirect:/user";
     }

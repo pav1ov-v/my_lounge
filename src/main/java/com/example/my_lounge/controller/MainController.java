@@ -3,6 +3,7 @@ package com.example.my_lounge.controller;
 import com.example.my_lounge.domain.Message;
 import com.example.my_lounge.dao.MessageRepository;
 import com.example.my_lounge.domain.User;
+import com.example.my_lounge.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,11 @@ import java.util.Map;
 
 @Controller
 public class MainController {
-    private final MessageRepository messageRepository;
+    private final MessageService messageService;
 
     @Autowired
-    public MainController(MessageRepository messageRepository) {
-        this.messageRepository = messageRepository;
+    public MainController(MessageService messageService) {
+        this.messageService = messageService;
     }
 
     @GetMapping("/")
@@ -32,9 +33,9 @@ public class MainController {
         Iterable<Message> messages;
 
         if (filter != null && !filter.isEmpty()) {
-            messages = messageRepository.findByTag(filter);
+            messages = messageService.findByTag(filter);
         } else {
-            messages = messageRepository.findAll();
+            messages = messageService.messageList();
         }
 
         model.put("messages", messages);
@@ -48,13 +49,9 @@ public class MainController {
             @AuthenticationPrincipal User user,
             @RequestParam String text,
             @RequestParam String tag, Map<String, Object> model) {
-        Message message = new Message(text, tag, user);
+        messageService.addMessage(user, text, tag);
 
-        messageRepository.save(message);
-
-        Iterable<Message> messages = messageRepository.findAll();
-
-        model.put("messages", messages);
+        model.put("messages", messageService.getMessages());
 
         return "home";
     }
