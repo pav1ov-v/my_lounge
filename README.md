@@ -20,7 +20,7 @@ This application implements registration and authorization of users. Users post 
 Users are endowed with different access rights. Users with the highest access level can edit the data of other users.
 All information about users and posts is stored in the database.
 
-###To run the demo application, follow these steps:
+### To run the demo application, follow these steps:
 
 #### 1. Clone the Repository
     git clone https://github.com/pav1ov-v/my_lounge.git
