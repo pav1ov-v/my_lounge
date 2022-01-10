@@ -8,7 +8,7 @@ This project will be a social network like Twitter.
 
 - Spring Boot
 - Spring Data
-- MySQL CE
+- H2/MySQL CE
 - Spring Web MVC
 - Spring Security
 - Freemarker
