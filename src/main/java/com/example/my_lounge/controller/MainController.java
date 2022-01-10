@@ -1,7 +1,6 @@
 package com.example.my_lounge.controller;
 
 import com.example.my_lounge.domain.Message;
-import com.example.my_lounge.dao.MessageRepository;
 import com.example.my_lounge.domain.User;
 import com.example.my_lounge.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
