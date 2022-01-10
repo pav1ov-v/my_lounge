@@ -31,3 +31,6 @@ All information about users and posts is stored in the database.
 #### 3. Check the Web-App**
     Open your browser and visit:
     http://localhost:8080/home
+    
+#### User List only for admin:
+#### login: "Vasiliy"; password: "1"
